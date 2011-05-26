@@ -53,9 +53,9 @@
 	Constructor:
    -------------------------------------------------------------------------- */
 
--(id) init
+-(id) initWithWindow:(NSWindow *)window
 {
-	if( self = [super init] )
+	if( self = [super initWithWindow:window] )
 	{
 		tabView = nil;
 		itemsList = [[NSMutableDictionary alloc] init];
@@ -98,7 +98,7 @@
    -------------------------------------------------------------------------- */
 
 -(void)	awakeFromNib
-{
+{	
 	NSString*		key;
 	int				index = 0;
 	NSString*		wndTitle = nil;
@@ -117,10 +117,16 @@
 	// Select the preferences page the user last had selected when this window was opened:
 	key = [NSString stringWithFormat: @"%@.prefspanel.recentpage", autosaveName];
 	index = [[NSUserDefaults standardUserDefaults] integerForKey: key];
-	[tabView selectTabViewItemAtIndex: index];
+	if (index < [tabView numberOfTabViewItems])
+	{
+		[tabView selectTabViewItemAtIndex: index];
+	}
 	
 	// Actually hook up our toolbar and the tabs:
 	[self mapTabsToToolbar];
+	
+	[super awakeFromNib];
+
 }
 
 
@@ -170,9 +176,11 @@
 	
 	// Set up window title:
 	currPage = [tabView selectedTabViewItem];
-	if( currPage == nil )
+	if ( currPage == nil )
 		currPage = [tabView tabViewItemAtIndex:0];
-	[[tabView window] setTitle: [baseWindowName stringByAppendingString: [currPage label]]];
+	
+	if ( currPage )
+		[[tabView window] setTitle: [baseWindowName stringByAppendingString: [currPage label]]];
 	
 	#if MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_3
 	if( [toolbar respondsToSelector: @selector(setSelectedItemIdentifier:)] )
