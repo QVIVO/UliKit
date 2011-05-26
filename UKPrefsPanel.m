@@ -59,6 +59,7 @@
 	{
 		tabView = nil;
 		itemsList = [[NSMutableDictionary alloc] init];
+		imagesList = [[NSMutableDictionary alloc] init];
 		baseWindowName = [@"" retain];
 		autosaveName = [@"com.ulikusterer" retain];
 	}
@@ -74,6 +75,7 @@
 -(void)	dealloc
 {
 	[itemsList release];
+	[imagesList release];
 	[baseWindowName release];
 	[autosaveName release];
 	
@@ -248,7 +250,14 @@
 		
 		// Set up a reasonable tooltip, and image   Note, these aren't localized, but you will likely want to localize many of the item's properties 
 		[toolbarItem setToolTip: itemLabel];
-		[toolbarItem setImage: [NSImage imageNamed:itemIdent]];
+		
+		// Set image
+		NSString *imageName = [imagesList objectForKey:itemIdent];
+		if (!imageName)
+		{
+			imageName = itemIdent;
+		}
+		[toolbarItem setImage: [NSImage imageNamed:imageName]];
 		
 		// Tell the item what message to send when it is clicked 
 		[toolbarItem setTarget: self];
