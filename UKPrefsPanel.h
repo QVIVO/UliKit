@@ -47,14 +47,14 @@
 	Headers:
    -------------------------------------------------------------------------- */
 
-#import <Foundation/Foundation.h>
+#import <Cocoa/Cocoa.h>
 
 
 /* -----------------------------------------------------------------------------
 	Classes:
    -------------------------------------------------------------------------- */
 
-@interface UKPrefsPanel : NSObject
+@interface UKPrefsPanel : NSWindowController <NSToolbarDelegate>
 {
 	IBOutlet NSTabView*		tabView;			///< The tabless tab-view that we're a switcher for.
 	NSMutableDictionary*	itemsList;			///< Auto-generated from tab view's items.

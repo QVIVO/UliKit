@@ -168,9 +168,18 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			buildConfigurationList = 3D4561BE0920AC2800139525 /* Build configuration list for PBXProject "UKPrefsPanel" */;
+			compatibilityVersion = "Xcode 2.4";
+			developmentRegion = English;
 			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* UKPrefsPanel */;
 			projectDirPath = "";
+			projectRoot = "";
 			targets = (
 				3DF42EBB05719CA4006E6B2A /* UKPrefsPanel 2 */,
 			);
@@ -240,7 +249,6 @@
 				INFOPLIST_FILE = "Info-UKPrefsPanel_2.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = "";
-				OPTIMIZATION_CFLAGS = "-O0";
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = UKPrefsPanel;
