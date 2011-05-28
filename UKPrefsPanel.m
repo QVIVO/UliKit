@@ -60,6 +60,8 @@
 		tabView = nil;
 		itemsList = [[NSMutableDictionary alloc] init];
 		imagesList = [[NSMutableDictionary alloc] init];
+		heightList = [[NSMutableDictionary alloc] init];
+		
 		baseWindowName = [@"" retain];
 		autosaveName = [@"com.ulikusterer" retain];
 	}
@@ -76,6 +78,7 @@
 {
 	[itemsList release];
 	[imagesList release];
+	[heightList release];
 	[baseWindowName release];
 	[autosaveName release];
 	
@@ -196,7 +199,9 @@
 
 -(IBAction)		orderFrontPrefsPanel: (id)sender
 {
-	[[tabView window] makeKeyAndOrderFront:sender];
+//	[[tabView window] makeKeyAndOrderFront:sender];
+	[[tabView window] makeKeyWindow];
+	[[tabView window] orderFrontRegardless];
 }
 
 
@@ -360,4 +365,32 @@
 }
 
 
+#pragma mark -
+#pragma mark NSTabViewDelegate
+
+// auto resize tabview height
+- (void)tabView:(NSTabView *)_tabView didSelectTabViewItem:(NSTabViewItem *)tabViewItem
+{
+	NSLog(@"tabViewItem selected: %@", [tabViewItem label]);
+	
+    // current tabview height
+	 NSRect frame = [[_tabView window] frame];
+	NSRect viewFrame = [[tabViewItem view]frame];
+
+	NSLog(@"view frame: {%f, %f}, {%f, %f}", viewFrame.origin.x, viewFrame.origin.y, viewFrame.size.width, viewFrame.size.height);
+	
+	NSString *ident = [tabViewItem identifier];
+	NSLog(@"item identifier: %@", ident);
+	// origin view height
+	NSNumber* origHeight = [heightList objectForKey:ident];
+	if (origHeight && [origHeight intValue] > 0)
+	{
+		int delta = NSHeight(viewFrame) - [origHeight intValue];
+		frame.size.height -= delta;
+		frame.origin.y += delta;
+	}
+
+	// Now set the new window frame and animate it.
+	[[tabView window] setFrame:frame display:YES animate:YES];
+}
 @end

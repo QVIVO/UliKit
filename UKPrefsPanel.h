@@ -59,6 +59,7 @@
 	IBOutlet NSTabView*		tabView;			///< The tabless tab-view that we're a switcher for.
 	NSMutableDictionary*	itemsList;			///< Auto-generated from tab view's items.
 	NSMutableDictionary*	imagesList;			///< Auto-generated from tab view's items.
+	NSMutableDictionary*	heightList;
 	NSString*				baseWindowName;		///< Auto-fetched at awakeFromNib time. We append a colon and the name of the current page to the actual window title.
 	NSString*				autosaveName;		///< Identifier used for saving toolbar state and current selected page of prefs window.
 }
