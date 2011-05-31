@@ -377,10 +377,10 @@
 	 NSRect frame = [[_tabView window] frame];
 	NSRect viewFrame = [[tabViewItem view]frame];
 
-	NSLog(@"view frame: {%f, %f}, {%f, %f}", viewFrame.origin.x, viewFrame.origin.y, viewFrame.size.width, viewFrame.size.height);
+	//NSLog(@"view frame: {%f, %f}, {%f, %f}", viewFrame.origin.x, viewFrame.origin.y, viewFrame.size.width, viewFrame.size.height);
 	
 	NSString *ident = [tabViewItem identifier];
-	NSLog(@"item identifier: %@", ident);
+	//NSLog(@"item identifier: %@", ident);
 	// origin view height
 	NSNumber* origHeight = [heightList objectForKey:ident];
 	if (origHeight && [origHeight intValue] > 0)
