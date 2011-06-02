@@ -55,7 +55,7 @@
 
 -(id) initWithWindow:(NSWindow *)window
 {
-	if( self = [super initWithWindow:window] )
+	if( (self = [super initWithWindow:window]) )
 	{
 		tabView = nil;
 		itemsList = [[NSMutableDictionary alloc] init];
@@ -103,7 +103,7 @@
 -(void)	awakeFromNib
 {	
 	NSString*		key;
-	int				index = 0;
+	long			index = 0;
 	NSString*		wndTitle = nil;
 	
 	// Generate a string containing the window's title so we can display the original window title plus the selected pane:
@@ -145,7 +145,7 @@
 {
     // Create a new toolbar instance, and attach it to our document window 
     NSToolbar		*toolbar =[[tabView window] toolbar];
-	int				itemCount = 0,
+	long			itemCount = 0,
 					x = 0;
 	NSTabViewItem	*currPage = nil;
 	
@@ -329,7 +329,7 @@
 
 -(NSArray*) toolbarDefaultItemIdentifiers: (NSToolbar *) toolbar
 {
-	int					itemCount = [tabView numberOfTabViewItems],
+	long				itemCount = [tabView numberOfTabViewItems],
 						x;
 	NSTabViewItem*		theItem = [tabView tabViewItemAtIndex:0];
 	//NSMutableArray*	defaultItems = [NSMutableArray arrayWithObjects: [theItem identifier], NSToolbarSeparatorItemIdentifier, nil];
