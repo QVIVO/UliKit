@@ -1,2 +1,5 @@
-**/**/build
-**/**/*.xcodeproj/tom.*
+.*
+*.mode1v3
+*.pbxuser
+xcuserdata/
+
