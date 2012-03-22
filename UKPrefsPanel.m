@@ -331,7 +331,7 @@
 {
 	long				itemCount = [tabView numberOfTabViewItems],
 						x;
-	NSTabViewItem*		theItem = [tabView tabViewItemAtIndex:0];
+	NSTabViewItem*		theItem = nil; //[tabView tabViewItemAtIndex:0];
 	//NSMutableArray*	defaultItems = [NSMutableArray arrayWithObjects: [theItem identifier], NSToolbarSeparatorItemIdentifier, nil];
 	NSMutableArray*	defaultItems = [NSMutableArray array];
 	
